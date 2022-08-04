@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Memory Game</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="game-header">
+        <h1 id="gameTitle">Memory Game</h1>
+      </div>
+      <div class="game-options">
+        <div class="game-options__status">
+          <p class="game-status__moves">
+            Moves Left: <span class="moves-value" id="gameMovesHolder">20</span>
+          </p>
+          <p class="game-status__timer">
+            Time:
+            <span class="game-timer__value" id="timerValueHolder">0</span>
+            Seconds
+          </p>
+        </div>
+        <div class="game-options__controls">
+          <button class="game-controls__start" id="startButton">PLAY</button>
+        </div>
+      </div>
+      <div class="game-board" id="gameBoard"></div>
+    </div>
+    <script src="index.js" async defer></script>
+  </body>
+</html>
