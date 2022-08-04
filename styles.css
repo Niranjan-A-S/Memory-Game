@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 16px;
+  -webkit-backface-visibility: hidden;
+}
+
+.game-container {
+  background-color: #ede8ee;
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  margin: auto;
+}
+
+.game-header {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #350f78;
+}
+
+.game-options {
+  background-color: #d3cedc;
+  display: flex;
+  justify-content: space-between;
+  padding: 0rem 1rem;
+}
+
+.game-status__moves {
+  background-color: #fff;
+  color: #350f78;
+}
+
+.game-status__timer {
+  background-color: #350f78;
+  color: #fff;
+}
+
+.game-status__moves,
+.game-status__timer {
+  padding: 0.5rem;
+  border-radius: 5%;
+  min-width: 10rem;
+  text-align: center;
+}
+
+.game-options__controls {
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 0rem;
+}
+
+.game-controls__start {
+  font-size: 1.25rem;
+  border-radius: 5%;
+  height: 3rem;
+  background-color: #350f78;
+  color: #fff;
+  max-width: 7rem;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+}
+
+.game-board {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.card {
+  display: inline-block;
+  align-self: stretch;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  width: 100px;
+  background-color: #fff;
+  color: #350f78;
+  font-size: 4rem;
+  padding: 1rem;
+}
+
+.card-front {
+  background-color: #350f78;
+  color: #350f78;
+}
+
+.overlay {
+  width: 100px;
+  height: 100px;
+  padding: 1rem;
+}
+
+.card-front:hover,
+.game-controls__start:hover {
+  border: 5px solid white;
+}
+.game-result {
+  display: inline-block;
+}
