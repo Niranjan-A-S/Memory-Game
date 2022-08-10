@@ -1,4 +1,5 @@
 let gameBoard = document.querySelector("#gameBoard")
+let gameBoardNode = document.getElementById("gameBoard")
 let timerValue = document.querySelector("#timerValueHolder")
 let startButton = document.querySelector("#startButton")
 let gameMovesHolder = document.querySelector("#gameMovesHolder")
@@ -13,8 +14,11 @@ let card, cardText, gameArray, shuffledArray, firstCard, secondCard, currentCard
 const gameStatements = {
     winStatement: "Congrats! You Won the Game 😁",
     loseStatement: "Oops! You Lost the Game 😟",
+    gameName: "Memory Game",
     startButtonHolder: "REPLAY"
 }
+let numberOfMoves = 20;
+let startButtonStatus = true;
 
 //create the game board
 const createGameBoard = () => {
@@ -60,16 +64,26 @@ const fillCards = (numberArray, cardArray) => {
 
 //Game start function
 const startGame = () => {
-    if (!gameStarted) {
+    if (!gameStarted && startButtonStatus) {
         timer();
         return;
     }
-    window.location.reload();
+    else {
+        gameBoard.innerHTML = ""
+        clearInterval(interval)
+        timerValueHolder.textContent = 0;
+        timer();
+        gameTitle.innerHTML = gameStatements.gameName
+        renderBoard();
+        gameStarted = false;
+        cardsFound = 0;
+    }
 }
 
 startButton.addEventListener("click", () => {
     startGame();
     gameStarted = true;
+    startButtonStatus = false;
 })
 
 //timer function
@@ -109,7 +123,9 @@ const flipCards = () => {
 const checkForMatch = () => {
     firstCard.textContent === secondCard.textContent ? foundCards() : unflipCards();
     gameMovesHolder.textContent--;
-    if (parseInt(gameMovesHolder.textContent) === 0) gameResult(gameStatements.loseStatement)
+    if (parseInt(gameMovesHolder.textContent) === 0) {
+        cardsFound === 10 ? gameResult(gameStatements.winStatement) : gameResult(gameStatements.loseStatement)
+    }
 }
 
 const foundCards = () => {
@@ -143,14 +159,20 @@ const resetBoard = () => {
     [firstCard, secondCard] = [null, null];
 }
 
-//Rendering functions
-window.addEventListener("load", (event) => {
-    event.preventDefault()
+const renderBoard = () => {
     createGameBoard()
     generateRandomNumbersArray(numbersArray)
     shuffleArray(gameArray)
     fillCards(shuffledArray, gameBoard)
     flipCards();
+    gameMovesHolder.textContent = numberOfMoves;
+    resetBoard();
+}
+
+//Rendering functions
+window.addEventListener("load", (event) => {
+    event.preventDefault()
+    renderBoard();
 })
 
 
@@ -160,3 +182,6 @@ const disableSelect = (e) => {
 }
 document.onselectstart = disableSelect
 document.onmousedown = disableSelect
+
+/* Replay, Moves Bug
+*/
